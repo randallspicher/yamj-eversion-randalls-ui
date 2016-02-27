@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings>
+
+<homelist>Other,Library</homelist>
+
+<datelang>EN</datelang>											
+<!-- Date language (EN, DE, FR, default = EN) -->
+
+
+<!-- ******* Weather ie. http://edg3.co.uk/snippets/weather-location-codes/ ******* -->
+<units>F</units>	
+
+<cityname1>Oxford, CT</cityname1>	
+<citycode1>USCT0164</citycode1>	
+
+<cityname2>New York</cityname2>	
+<citycode2>USNY0996</citycode2>	
+
+<cityname3>Washington DC</cityname3>	
+<citycode3>USDC0001</citycode3>
+
+
+
+<!--
+
+
+<cityname3>Toronto</cityname3>	
+<citycode3>CAXX0504</citycode3>
+<cityname4>Vancouver</cityname4>	
+<citycode4>CAXX0518</citycode4>
+-->
+
+
+<!-- CHOICES *** ffffff (white) *** eeee00 (yellow) *** a10000 (red) *** 03a000 (green) *** 0040ff (blue) *** 9a9a9a (silver) -->
+<cursor.color>eeee00</cursor.color>
+
+
+
+	<current_weather>true</current_weather>
+	<!-- Show 3-day weather forecast (PCH C-300 like) -->
+	<home_forecast>true</home_forecast>
+	<largeclock>true</largeclock>
+
+<!-- ******* Wall Overlays ******* -->
+
+<!--<overlaythumbnail>true</overlaythumbnail>							<!-- Movie Wall 16,24,36,48 Overlay Thumbnail -->
+<overlayunwatched>true</overlayunwatched>							<!-- Movie Wall 16,24,36,48 Overlay Unwatched (NEW) -->
+<overlayset>true</overlayset>									<!-- Movie Wall 16,24,36,48 Overlay Set (Movie/TV)-->
+<overlayposter>true</overlayposter>								<!-- Movie Wall Details Overlay Poster -->
+
+
+
+
+
+
+<!-- ******* INDEX/DETAIL PAGES ******* -->
+
+<indexINDEX>movie.wall.(1).24</indexINDEX>							<!-- All/New/Extras/HD/HD-720/HD-1080/Top 250/Watched/Unwatched/Rating -->
+<indexMOVIE>movie.wall.(1).24</indexMOVIE>							<!-- Movies -->
+<indexNEWMOVIE>movie.wall.(1).24</indexNEWMOVIE>						<!-- New-Movies -->
+<indexMOVIESET>movie.list.(1).8</indexMOVIESET>						<!-- Movies Boxset -->
+
+<!-- CHOICES -->
+<!-- movie.list.(1).8 -->
+<!-- movie.list.(1).15 -->
+<!-- movie.wall.(1).8 -->
+<!-- movie.wall.(1).24 -->
+<!-- movie.wall.(1).48 -->
+
+<detailsMOVIE>movie.wall.(2).1.outline</detailsMOVIE>						<!-- Movie Detail -->
+
+<!-- CHOICES -->
+<!-- movie.wall.(2).1.outline -->
+<!-- movie.wall.(2).2.plot -->
+<!-- movie.wall.(2).3.cast -->
+<!-- movie.wall.(2).4.details -->
+<!-- movie.wall.(2).5.fanart -->
+<!-- movie.wall.(2).6.all.awards -->
+<!-- movie.wall.(2).7.all.trailers -->
+
+<indexTV>tv.banner.(1).14</indexTV>									<!-- TV -->
+<indexNEWTV>tv.banner.(1).14</indexNEWTV>								<!-- New-TV -->
+
+<!-- CHOICES -->
+<!-- tv.banner.(1).14 -->
+<!-- tv.banner.(1).21 -->
+<!-- movie.list.(1).8 -->
+<!-- movie.list.(1).15 -->
+<!-- movie.wall.(1).8 -->
+<!-- movie.wall.(1).24 -->
+<!-- movie.wall.(1).48 -->
+
+<indexTVSET>tv.banner.(2).8</indexTVSET>								<!-- TV Set -->
+
+<!-- CHOICES -->
+<!-- tv.banner.(2).8 -->
+
+<detailsTV>tv.banner.(3).1.outline.full</detailsTV>						<!-- TV Detail -->
+
+<!-- CHOICES -->
+<!-- tv.banner.(3).1.outline.full -->
+<!-- tv.banner.(3).2.outline.half -->
+<!-- tv.banner.(3).3.episodes -->
+<!-- tv.banner.(3).4.cast -->
+<!-- tv.banner.(3).5.fanart -->
+
+<indexPEOPLE>people.wall.custom</indexPEOPLE>							<!-- Cast/Person/Writer/Director -->
+
+<!-- CHOICES -->
+<!-- movie.list.(1).8 -->
+<!-- movie.list.(1).15 -->
+<!-- movie.wall.(1).8 -->
+<!-- movie.wall.(1).24 -->
+<!-- movie.wall.(1).48 -->
+<!-- people.wall.custom -->
+
+<indexPEOPLEwall>people.48</indexPEOPLEwall>							<!-- Wall Mode Cast/Person/Writer/Director -->
+
+<!-- CHOICES -->
+<!-- people.24 -->
+<!-- people.48 -->
+
+<!-- ******* INDEX TRAILERS ******* -->
+
+<indexTrailers>main.trailer.wall.16</indexTrailers>						<!-- Trailer Detail -->
+
+<!-- CHOICES -->
+<!-- main.trailer.wall.16 -->
+<!-- main.trailer.wall.24 -->
+
+
+<!-- Tech Background Info -->
+
+<tech.title.color>ffcc66</tech.title.color> 							<!-- Title				ie. AVATAR -->
+<tech.year.color>99ccff</tech.year.color>								<!-- Year				ie. 2011 -->
+<tech.runtime.color>99ccff</tech.runtime.color>							<!-- Runtime			ie. 1hr 46m -->
+<tech.cert.color>99ccff</tech.cert.color>								<!-- Certification		ie. PG -->
+<tech.show.status.color>99ccff</tech.show.status.color>					<!-- Show Status			ie. Status: ENDED -->
+<tech.top250.color>99ccff</tech.top250.color>							<!-- Top 250			ie. # 124 -->
+<tech.filesize.color>99ccff</tech.filesize.color> 						<!-- Filesize			ie. 1.36 GB -->
+<tech.container.color>99ccff</tech.container.color> 						<!-- Container			ie. AVI -->
+<tech.video.color>99ccff</tech.video.color> 							<!-- Video Codec			ie. XVID -->
+<tech.resolution.color>99ccff</tech.resolution.color> 					<!-- Resolution			ie. SD -->
+<tech.vratio.color>99ccff</tech.vratio.color> 							<!-- Video Ratio			ie. 2.25:1 -->
+<tech.audio.color>99ccff</tech.audio.color> 							<!-- Audio Codec			ie. AC3 -->
+<tech.channels.color>99ccff</tech.channels.color> 						<!-- Audio Channels		ie. 5.1 -->
+<tech.star.rating.color>99ccff</tech.star.rating.color> 					<!-- Star Rating			ie. 66 / 100 -->
+<tech.index.kind.color>99ccff</tech.index.kind.color> 					<!-- Index Kind			ie. Titles: -->
+<tech.index.color>99ccff</tech.index.color> 							<!-- Index				ie. "23 /    " -->
+<tech.index.total.color>99ccff</tech.index.total.color> 		
+
+</settings>

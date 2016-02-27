@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<eskin>
+
+<control>
+<fullscreen>true</fullscreen>
+</control>
+
+	<!-- Background -->
+
+<background>
+<file>[:@media:]common/tv.banner.(3).0.background.png</file>
+</background>
+
+	<!-- Fanart -->
+
+<image>
+<name>fanart</name>
+<file>[:@jukebox:][:fanart:]</file>
+<posx>13</posx>
+<posy>13</posy>
+<width>1254</width>
+<height>658</height>
+</image>
+
+<segment>
+
+	<!-- Text Start Location -->
+
+<name>eplist</name>
+<hyperscroll>false</hyperscroll>
+<datasource>episodes</datasource>
+<startx>27</startx>
+<starty>15</starty>
+<scroll>2</scroll>
+
+	<!-- Cursor Size -->
+
+<cursor>
+<file>[:@media:]common/cursor/cursor_refl[:#cursor.refl:].950.950.20.20.[:#cursor.color:].[:#cursor.shiny:].swf</file>
+<above>true</above>
+<animate>true</animate>
+<posx>-1</posx>
+<posy>0</posy>
+<width>247</width>
+<height>166</height>
+<scroll>2</scroll>
+</cursor>
+
+<tile>
+
+	<!-- Columns and Rows -->
+
+<cols>5</cols>
+<rows>4</rows>
+<width>245</width>
+<height>163</height>
+
+	<!-- Video Image Outline 1 -->
+
+<image>
+<name>videoimagebg</name>
+<file>[:@media:]common/tv.banner.(3).3.outline.episodes.outline1.png</file>
+<posx>5</posx>
+<posy>5</posy>
+<width>235</width>
+<height>156</height>
+</image>
+
+	<!-- Video Image - Unknown -->
+
+<image>
+<name>video.image.unknown</name>
+<file>[:@media:]common/tv.banner.(3).3.outline.episodes.unknown.png</file>
+<posx>15</posx>
+<posy>13</posy>
+<width>215</width>
+<height>115</height>
+</image>
+
+	<!-- Video Image -->
+
+<image>
+<name>video.image</name>
+<file>[:@jukebox:][:videoimage:]</file>
+<posx>15</posx>
+<posy>13</posy>
+<width>215</width>
+<height>115</height>
+</image>
+
+	<!-- Video Image Title -->
+
+<text>
+<name>mc</name>
+<display>[:episode:]/[:@totaltiles:]. [:title:]</display>
+<posx>19</posx>
+<posy>126</posy>
+<width>205</width>
+<height>40</height>
+<size>15</size>
+<align>center</align>
+<bold>true</bold>
+<wordwrap>true</wordwrap>
+<color>tvb3.3.ep.title.label.color</color>
+<hlcolor>tvb3.3.ep.title.label.hlcolor</hlcolor>
+</text>	
+
+</tile>
+
+
+</segment>	
+
+<include>tv.banner.(3).bottom.menu.include</include>
+
+
+</eskin>
