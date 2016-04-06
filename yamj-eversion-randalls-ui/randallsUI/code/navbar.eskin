@@ -11,7 +11,7 @@
 		<size>36</size>
 		<align>center</align>
 		<bold>true</bold>
-		<color>222222</color>
+		<color>999999</color>
 	</text>
 	<text>
         <name>indexname_untranslatable</name>
@@ -24,7 +24,7 @@
 		<size>36</size>
 		<align>center</align>
 		<bold>true</bold>
-		<color>222222</color>
+		<color>999999</color>
 	</text>
 	<text>
 		<name>indexname_translatable</name>
