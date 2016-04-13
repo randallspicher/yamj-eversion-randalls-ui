@@ -23,11 +23,12 @@ do
     echo ${file}
   
 	watched=$( grep -Po '(?i)<watched>\K.*(?=</watched>)' "${file}")
-	if [ "${watched}" == 'true' ]
-	then
+	if [[ "${watched}" == 'true' ]] ; then
+		if [[ ! -e "${file}.watched" ]] ; then
 		echo file= ${file}
 #		echo watched=${watched}
 		echo ${file} >"${file}.watched"
+		fi
 	fi
 
 done
