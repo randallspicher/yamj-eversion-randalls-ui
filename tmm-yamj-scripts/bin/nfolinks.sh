@@ -206,6 +206,8 @@ fi
 		fi
 	done
 
+rename -v 's/-trailer\.([^\.]+)$/[Trailer].$1/' *-trailer.*
+
 #clean up any broken links we may have created
 symlinks -d .
 

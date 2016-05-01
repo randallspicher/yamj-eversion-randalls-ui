@@ -15,6 +15,7 @@ sub recursedirs {
     my $Location=$_[0];
     chdir "$Location";
     print "Parsing in $Location\n";
+    print `bash $ENV{'NFO_UTIL_BIN_PATH'}/webm2mkv.sh *.webm`;
     print `bash $ENV{'NFO_UTIL_BIN_PATH'}/nfolinks.sh`;
     print `bash $ENV{'NFO_UTIL_BIN_PATH'}/nfowatched.sh`;
     print `bash $ENV{'NFO_UTIL_BIN_PATH'}/nfotvactors.sh`;
