@@ -88,9 +88,9 @@
 <segname>index</segname>
 <hyper>4</hyper>
 <condition>[:#overlayunwatched:] = true ++ [:watched:] = false</condition>
-<file>[:@media:]common/movie.list.(1).15.overlay.unwatched.png</file>
-<posx>1180</posx>
-<posy>65</posy>
+<file>[:@media:]common/overlay.unwatched.png</file>
+<posx>1172</posx>
+<posy>57</posy>
 <width>40</width>
 <height>40</height>
 </image>

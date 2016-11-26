@@ -23,6 +23,7 @@
 <height>658</height>
 </image>
 
+
 	<!-- Outline Bar -->
 <!--
 <image>
@@ -106,7 +107,11 @@
 
 <image>
 <name>person.image</name>
+<!-- 
+<file>[:@jukebox:]People/TV/[:title:] ([:year:])/[:person@name,yamjfilesafe:].jpg</file>
+-->
 <file>[:@jukebox:]People/[:person@name,yamjfilesafe:]-[:person@character,yamjfilesafe:].jpg</file>
+
 <altfile>[:@jukebox:]People/[:person@name,yamjfilesafe:].jpg</altfile>
 <posx>5</posx>
 <posy>5</posy>
@@ -131,7 +136,12 @@
 
 <text>
 <name>person.character</name>
-<display>[:person@character,blank:]</display>
+
+  <display>[:person@character,blank:][:/movie/title:] ([:/movie/year:])</display>
+
+<!-- 
+ <display>[:/../../title:] ([:library/movies/movie/year:])</display>
+-->
 <posx>0</posx>
 <posy>280</posy>
 <width>180</width>

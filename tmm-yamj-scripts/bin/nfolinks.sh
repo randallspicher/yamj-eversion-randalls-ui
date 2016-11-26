@@ -43,10 +43,10 @@ if [ -e tvshow.nfo ]; then
 
 	echo ${name}
 		
-	if [ ! -L "${name}.nfo" ]; then
-		rm "${name}.nfo"
-		ln -s tvshow.nfo  "${name}.nfo"
-	fi
+	#if [ ! -L "${name}.nfo" ]; then
+	#	rm "${name}.nfo"
+	#	ln -s tvshow.nfo  "${name}.nfo"
+	#fi
 		
 	
 	#	echo doing symlinks
@@ -73,7 +73,7 @@ if [ -e tvshow.nfo ]; then
 	
 	
 	
-	ls -1 | grep -Pio '(season\d\d)' | while read file
+	ls -1 | grep -Pio '(season\d+)' | while read file
 	do
 		if [ ! -e "${file}" ]; then 
 			mkdir ${file}
@@ -158,7 +158,6 @@ fi
 if [ -e movie.nfo ]; then
 	name=$(grep -Po '(?i)<set>\K.*(?=</set>)' movie.nfo)
 
-
 	name=${name/&amp;/&}
 
 	echo SET=${name}
@@ -205,8 +204,6 @@ fi
 			ln -s "${file}" "${vidfile}"
 		fi
 	done
-
-rename -v 's/-trailer\.([^\.]+)$/[Trailer].$1/' *-trailer.*
 
 #clean up any broken links we may have created
 symlinks -d .

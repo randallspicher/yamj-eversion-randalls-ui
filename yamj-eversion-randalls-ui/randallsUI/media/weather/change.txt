@@ -1,0 +1,6 @@
+v0
+- initial release with new yahoo url 
+v1.0
+- fix celsius/farenheit hardcoded 
+v1.1
+- fix weather_full and weather_full.en

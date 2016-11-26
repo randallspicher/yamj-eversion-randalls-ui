@@ -25,12 +25,11 @@ if [[ -e "tvshow.nfo" ]]; then
 	name=${name/&amp;/&}
 	newnfo="${name}.nfo"
 
-	if [ ! -L "${newnfo}" ]; then
+	#if [ -L "${newinfo}" ]; then
 		rm -v "${newnfo}"
-		#cp -v tvshow.nfo "${newnfo}"			
-		ln -s tvshow.nfo "${newnfo}"			
-	fi
+	#fi
 
+	cp -v tvshow.nfo "${newnfo}"			
 
 #	showid=$( xpath -e "//tvshow/id/text()" "${file}" 2>/dev/null )
 	actorcount=$( xpath -e "count(//tvshow/actor)" "${file}" 2>/dev/null )
@@ -51,31 +50,29 @@ if [[ -e "tvshow.nfo" ]]; then
 		#echo ${role}
 		role=${role//[<>\"|\/:?*]/-}
 		#echo ${role}
-		#		thumbsubdir="TV/${movie} (${year})"
+		thumbsubdir="TV/${movie} (${year})"
 		thumbname="${name}-${role}.jpg"
-		#thumbfile="${YAMJ_PEOPLEDIR}/${thumbsubdir}/${thumbname}"
-		#mkdir -p "${thumbdir}"
-		#if [[ -n "${thumb}" && ! -s "${thumbfile}" ]] ; then
-			#	echo getting $thumbfile
-			#wget -O "/tmp/${thumbname}" "${thumb}"
-			#if [[ -s "/tmp/${thumbname}" ]]; then
-				#	mv "/tmp/${thumbname}" "${thumbdir}"
-			#fi
-			#if [[ ! -s "${YAMJ_PEOPLEDIR}/${thumbname}" ]]; then
-				#	mv "/tmp/${thumbname}" "${YAMJ_PEOPLEDIR}/${thumbname}"
-			#fi
-		#fi	
-		if [[ -n "${thumb}" && ! -s "${YAMJ_PEOPLEDIR}/${thumbname}" ]]; then
+		thumbfile="${YAMJ_PEOPLEDIR}/${thumbsubdir}/${thumbname}"
+		mkdir -p "${thumbdir}"
+		if [[ -n "${thumb}" && ! -s "${thumbfile}" ]] ; then
+			echo getting $thumbfile
 			wget -O "/tmp/${thumbname}" "${thumb}"
 			if [[ -s "/tmp/${thumbname}" ]]; then
-				mv "/tmp/${thumbname}" "${YAMJ_PEOPLEDIR}/${thumbname}"
-			fi	
-		fi
-		
-		#oldval=$( xpath -e "//tvshow/actor[$i]/thumb/text()" "${newnfo}" 2>/dev/null )
-		#if [[ "${oldval}" != "People/${thumbsubdir}/${thumbname}" ]]; then
-			#	xmlstarlet ed -L -u "//tvshow/actor[$i]/thumb" -v "People/${thumbsubdir}/${thumbname}" "${newnfo}"
+				mv "/tmp/${thumbname}" "${thumbdir}"
+			fi
+			#if [[ ! -s "${YAMJ_PEOPLEDIR}/${name}-${role}.jpg" ]]; then
+				#mv "/tmp/${thumbname}" "${thumbfile}"
+			#fi
+		fi	
+		#if [[ ! -s "${YAMJ_PEOPLEDIR}/${name}-${role}.jpg" ]]; then
+		#	wget -O "/tmp/${thumbname}" "${thumb}"
+		#	if [[ -s "/tmp/${thumbname}" ]]; then
+		#		mv "/tmp/${thumbname}" "${YAMJ_PEOPLEDIR}/${name}-${role}.jpg"
+		#	fi	
 		#fi
+		
+		xmlstarlet ed -L -u "//tvshow/actor[$i]/thumb" -v "People/${thumbsubdir}/${thumbname}" "${newnfo}"
+		
 	done
 fi
 

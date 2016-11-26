@@ -113,9 +113,9 @@
 <image>
 <name>overlay.unwatched</name>
 <condition>[:#overlayunwatched:] = true ++ [:watched:] = false</condition>
-<file>[:@media:]common/movie.wall.(1).24.overlay.unwatched.png</file>
-<posx>353</posx>
-<posy>6</posy>
+<file>[:@media:]common/overlay.unwatched.png</file>
+<posx>361</posx>
+<posy>-2</posy>
 <width>40</width>
 <height>40</height>
 </image>

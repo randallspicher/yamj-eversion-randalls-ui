@@ -12,13 +12,14 @@
 <units>F</units>	
 
 <cityname1>Oxford, CT</cityname1>	
-<citycode1>USCT0164</citycode1>	
+<citycode1>2467151</citycode1>
+<citycode>2467151</citycode>
 
 <cityname2>New York</cityname2>	
-<citycode2>USNY0996</citycode2>	
+<citycode2>2459115</citycode2>	
 
-<cityname3>Washington DC</cityname3>	
-<citycode3>USDC0001</citycode3>
+<cityname3>Richmond, VA</cityname3>	
+<citycode3>2347605</citycode3>
 
 
 
