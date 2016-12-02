@@ -42,9 +42,12 @@ do
 		fi
 
 		if [[ ! -z "${SETNAME}" ]] ; then
-
+			
+			SETNAME=${SETNAME#The }
+			SETNAME=${SETNAME#A /}
+						
 			WANTSORT="${SETNAME} ${AIRED}"
-			#echo WANTSORT ${WANTSORT}
+			echo WANTSORT ${WANTSORT}
 			#echo HAVESORT ${SORTTITLE}
 				
 			if [[ ! -z "${WANTSORT}" ]] ; then
