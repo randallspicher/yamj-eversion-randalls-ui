@@ -109,11 +109,13 @@
 <name>person.image</name>
 <!-- 
 <file>[:@jukebox:]People/TV/[:title:] ([:year:])/[:person@name,yamjfilesafe:].jpg</file>
--->
+<file>[:person@url:]</file>
 <file>[:@jukebox:]People/[:person@name,yamjfilesafe:]-[:person@character,yamjfilesafe:].jpg</file>
-
+<file>[:person@photoFile:]</file>
 <altfile>[:@jukebox:]People/[:person@name,yamjfilesafe:].jpg</altfile>
-<posx>5</posx>
+-->
+<file>[:@jukebox:]People/CH-[:person@name,cut1:]/[:person@name,yamjfilesafe:] - [:person@character,yamjfilesafe:].jpg</file>
+<altfile>[:@jukebox:]People/[:person@name,cut1:]/[:person@name,yamjfilesafe:].jpg</altfile>
 <posy>5</posy>
 <width>185</width>
 <height>275</height>
@@ -137,7 +139,7 @@
 <text>
 <name>person.character</name>
 
-  <display>[:person@character,blank:][:/movie/title:] ([:/movie/year:])</display>
+  <display>[:person@character,blank:]</display>
 
 <!-- 
  <display>[:/../../title:] ([:library/movies/movie/year:])</display>

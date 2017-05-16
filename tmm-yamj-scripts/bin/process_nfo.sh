@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
-export NFO_UTIL_BIN_PATH="/d1/YAMJ/TMM-Conversion/bin"
-export YAMJ_PEOPLEDIR="/d1/People"
+export NFO_UTIL_BIN_PATH="/home/yamj/TMM-Conversion/bin"
+export YAMJ_PEOPLEDIR="/home/yamj/People"
 
 
 LANG=en_US.UTF-8

@@ -8,11 +8,11 @@
 		echo detected ${FILE}
 		echo base ${BASE}
 		echo extension ${EXT}
-		if [[ "${BASE}" =~ .*\[Trailer\]-trailer$ ]]; then
+		if [[ "${BASE}" =~ .*\[Trailer.*\]-trailer$ ]]; then
 			echo appears to be correct trailer
-		elif [[ "${BASE}" =~ .*\[Trailer\]$ ]]; then
+		elif [[ "${BASE}" =~ .*\[Trailer.*\]$ ]]; then
 			echo appears to just have [Trailer]
-			rename -v 's/\[Trailer\]/[Trailer]-trailer/i' "${FILE}"
+			rename -v 's/\[Trailer(.*)\]/[Trailer$1]-trailer/i' "${FILE}"
 		elif [[ "${BASE}" =~ .*-trailer$ ]]; then
 			echo appears to just have -trailer
 			rename -v 's/-trailer/.[Trailer]-trailer/i' "${FILE}"

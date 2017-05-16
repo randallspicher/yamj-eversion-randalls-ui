@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export NFO_UTIL_BIN_PATH="/d1/YAMJ/TMM-Conversion/bin"
-export YAMJ_PEOPLEDIR="/d1/People"
+export NFO_UTIL_BIN_PATH="/home/yamj/TMM-Conversion/bin"
+export YAMJ_PEOPLEDIR="/home/yamj/People"
 
 LANG=en_US.UTF-8
 LOCALE=UTF-8
@@ -38,69 +38,99 @@ if [[ -e "movie.nfo" ]]; then
 	for i in `seq 1 $actorcount`;
 	do
 		name=$( xpath -e "//movie/actor[$i]/name/text()" "${file}" 2>/dev/null )
+				
 		thumb=$( xpath -e "//movie/actor[$i]/thumb/text()" "${file}" 2>/dev/null )
 
 		role=$( xpath -e "//movie/actor[$i]/role/text()" "${file}" 2>/dev/null )
+		if [[ ! -n ${moviename} ]]; then
+			moviename="${movie} (${year})"
+		fi 
 
-		if [[ -n ${moviename} ]]; then
-			thumb="${imagehost}/${name}  ${moviename}.jpg"
-			thumb1="${imagehost}/${name}  ${moviename} 1.jpg"
-			thumb2="${imagehost}/${name} ${moviename}.jpg"
-			thumb3="${imagehost}/${name} ${moviename} 1.jpg"
-			thumb4="${imagehost}/1Actors Images/${name}  ${moviename} (${year}).jpg"	
-		else
-			thumb="${imagehost}/${name}  ${movie} (${year}).jpg"
-			thumb1="${imagehost}/${name}  ${movie} (${year}) 1.jpg"
-			thumb2="${imagehost}/${name} ${movie} (${year}).jpg"
-			thumb3="${imagehost}/${name} ${movie} (${year}) 1.jpg"
-			thumb4="${imagehost}/1Actors Images/${name}  ${movie} (${year}).jpg"	
-		fi
-		#echo Character Thumb: "${thumb}"
+		thumb1="${imagehost}/1Actors Images/${name}  ${moviename}.jpg"	
+		thumb2="${imagehost}/1Actors Images/${name}  ${moviename} 1.jpg"	
+		thumb3="${imagehost}/${name}  ${moviename}.jpg"
+		thumb4="${imagehost}/${name}  ${moviename} 1.jpg"
+		thumb5="${imagehost}/${name} ${moviename}.jpg"
+		thumb6="${imagehost}/${name} ${moviename} 1.jpg"
+
+				#echo Character Thumb: "${thumb}"
 		
 		#echo ${name}
 		name=${name//[<>\"|\/:?*]/-}
-		
+		PF="CH-${name:0:1}"
+				
 		#echo ${name}	
 
 
 		#thumbdir="${YAMJ_PEOPLEDIR}/Movie/${movie} (${year})"
-		thumbdir="${YAMJ_PEOPLEDIR}"
+		thumbdir="${YAMJ_PEOPLEDIR}/${PF}/"
 
 		#echo "${role}"
 		role=${role//[<>\"|\/:?*]/-}
 		#echo "${role}"
-		thumbname="${name}-${role}.jpg"
-		thumbfile="${thumbdir}/${thumbname}"
+		thumbname="${name} - ${role}.jpg"
+
+		thumbdir="${YAMJ_PEOPLEDIR}/${PF}/"
+		thumbfile="${thumbdir}${thumbname}"
+	 	tempfile="/tmp/${PF}/${thumbname}"
+
 		mkdir -p "${thumbdir}"
-		if [[ -n "${thumb4}" && ! -s "${thumbfile}" ]] ; then
-			wget -O "/tmp/${thumbname}" "${thumb4}"
-			if [[ -s "/tmp/${thumbname}" ]]; then
-				mv "/tmp/${thumbname}" "${thumbdir}"
-			fi
-		fi	
-		if [[ -n "${thumb}" && ! -s "${thumbfile}" ]] ; then
-			wget -O "/tmp/${thumbname}" "${thumb}"
-			if [[ -s "/tmp/${thumbname}" ]]; then
-				mv "/tmp/${thumbname}" "${thumbdir}"
-			fi
-		fi	
+		mkdir -p "/tmp/${PF}"
+
+
 		if [[ -n "${thumb1}" && ! -s "${thumbfile}" ]] ; then
-			wget -O "/tmp/${thumbname}" "${thumb1}"
-			if [[ -s "/tmp/${thumbname}" ]]; then
-				mv "/tmp/${thumbname}" "${thumbdir}"
-			fi
+			rm "${tempfile}"
+			wget -O "${tempfile}" "${thumb1}"
+			if [[ -s "${tempfile}" ]]; then
+				mv "${tempfile}" "${thumbdir}"
+			else
+				rm "${tempfile}"
+			fi	
 		fi	
 		if [[ -n "${thumb2}" && ! -s "${thumbfile}" ]] ; then
-			wget -O "/tmp/${thumbname}" "${thumb2}"
-			if [[ -s "/tmp/${thumbname}" ]]; then
-				mv "/tmp/${thumbname}" "${thumbdir}"
-			fi
+			rm "${tempfile}"
+			wget -O "${tempfile}" "${thumb2}"
+			if [[ -s "${tempfile}" ]]; then
+				mv "${tempfile}" "${thumbdir}"
+			else
+				rm "${tempfile}"
+			fi	
 		fi	
 		if [[ -n "${thumb3}" && ! -s "${thumbfile}" ]] ; then
-			wget -O "/tmp/${thumbname}" "${thumb3}"
-			if [[ -s "/tmp/${thumbname}" ]]; then
-				mv "/tmp/${thumbname}" "${thumbdir}"
-			fi
+			rm "${tempfile}"
+			wget -O "${tempfile}" "${thumb3}"
+			if [[ -s "${tempfile}" ]]; then
+				mv "${tempfile}" "${thumbdir}"
+			else
+				rm "${tempfile}"
+			fi	
+		fi	
+		if [[ -n "${thumb4}" && ! -s "${thumbfile}" ]] ; then
+			rm "${tempfile}"
+			wget -O "${tempfile}" "${thumb4}"
+			if [[ -s "${tempfile}" ]]; then
+				mv "${tempfile}" "${thumbdir}"
+			else
+				rm "${tempfile}"
+			fi	
+		fi	
+		if [[ -n "${thumb5}" && ! -s "${thumbfile}" ]] ; then
+			rm "${tempfile}"
+			wget -O "${tempfile}" "${thumb5}"
+			if [[ -s "${tempfile}" ]]; then
+				mv "${tempfile}" "${thumbdir}"
+			else
+				rm "${tempfile}"
+			fi	
+		fi	
+		if [[ -n "${thumb6}" && ! -s "${thumbfile}" ]] ; then
+			rm "${tempfile}"
+			wget -O "${tempfile}" "${thumb6}"
+			if [[ -s "${tempfile}" ]]; then
+				mv "${tempfile}" "${thumbdir}"
+			else
+				rm "${tempfile}"
+			fi	
 		fi	
 
 								

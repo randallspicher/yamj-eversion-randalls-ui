@@ -1028,10 +1028,10 @@
 <posy>685</posy>
 <width>146</width>
 <height>30</height>
-<size>16</size>
+<size>18</size>
 <align>center</align>
 <bold>true</bold>
-<color>bottom.menu.color</color>
+<color>C92536</color>
 </text>
 
 <!-- position 2 (GREEN) -->
@@ -1044,10 +1044,10 @@
 <posy>685</posy>
 <width>146</width>
 <height>30</height>
-<size>16</size>
+<size>18</size>
 <align>center</align>
 <bold>true</bold>
-<color>bottom.menu.color</color>
+<color>2BBB47</color>
 </text>
 
 <!-- position 3 (YELLOW) -->
@@ -1059,10 +1059,10 @@
 <posy>685</posy>
 <width>146</width>
 <height>30</height>
-<size>16</size>
+<size>18</size>
 <align>center</align>
 <bold>true</bold>
-<color>bottom.menu.color</color>
+<color>E3E33B</color>
 </text>
 
 <!-- position 4 (BLUE) -->
@@ -1074,12 +1074,11 @@
 <posy>685</posy>
 <width>146</width>
 <height>30</height>
-<size>16</size>
+<size>22</size>
 <align>center</align>
 <bold>true</bold>
-<color>bottom.menu.hlcolor</color>
+<color>466BC1</color>
 </text>
-
 
 <!-- Remote Buttons -->
 

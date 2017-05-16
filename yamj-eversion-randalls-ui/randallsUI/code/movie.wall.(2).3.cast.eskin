@@ -102,12 +102,12 @@
 <height>276</height>
 </image>
 -->
-	<!-- Video Image -->
+<!-- Video Image -->
 
 <image>
 <name>person.image</name>
-<file>[:@jukebox:]People/[:person@name,yamjfilesafe:]-[:person@character,yamjfilesafe:].jpg</file>
-<altfile>[:@jukebox:]People/[:person@name,yamjfilesafe:].jpg</altfile>
+<file>[:@jukebox:]People/CH-[:person@name,cut1:]/[:person@name,yamjfilesafe:] - [:person@character,yamjfilesafe:].jpg</file>
+<altfile>[:@jukebox:]People/[:person@name,cut1:]/[:person@name,yamjfilesafe:].jpg</altfile>
 <posx>5</posx>
 <posy>5</posy>
 <width>185</width>
@@ -125,9 +125,7 @@
 </image>
 -->
 
-
-
-	<!-- Video Image Title -->
+<!-- Video Image Title -->
 
 <text>
 <name>person.character</name>

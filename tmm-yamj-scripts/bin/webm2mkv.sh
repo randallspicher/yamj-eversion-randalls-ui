@@ -8,7 +8,7 @@ export PERL_UTF8_LOCALE=1 PERL_UNICODE=ASD
 while (( "$#" )); do 
 	origfile="$1"
 
-	echo orig: $origfile
+	#echo orig: $origfile
 	ext=${origfile##*.}
 	fname=`basename "$origfile" $ext`
 	FILEMKV="${fname}mkv" 
@@ -18,7 +18,7 @@ while (( "$#" )); do
 			ffmpeg -i "$origfile" "$FILEMKV" && rm "$origfile" 
 		fi
 	fi
-	echo $FILEMKV
+	#echo $FILEMKV
 shift
 done
 

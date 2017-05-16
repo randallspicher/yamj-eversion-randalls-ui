@@ -28,7 +28,7 @@ if [[ -e "tvshow.nfo" ]]; then
 	if [ ! -L "${newnfo}" ]; then
 		rm -v "${newnfo}"
 		#cp -v tvshow.nfo "${newnfo}"			
-		ln -s tvshow.nfo "${newnfo}"			
+		ln -rs tvshow.nfo "${newnfo}"			
 	fi
 
 
@@ -47,35 +47,32 @@ if [[ -e "tvshow.nfo" ]]; then
 		#echo ${name}
 		name=${name//[<>\"|\/:?*]/-}
 		#echo ${name}	
+		PF="CH-${name:0:1}"
+		
 
 		#echo ${role}
 		role=${role//[<>\"|\/:?*]/-}
-		#echo ${role}
-		#		thumbsubdir="TV/${movie} (${year})"
-		thumbname="${name}-${role}.jpg"
-		#thumbfile="${YAMJ_PEOPLEDIR}/${thumbsubdir}/${thumbname}"
-		#mkdir -p "${thumbdir}"
-		#if [[ -n "${thumb}" && ! -s "${thumbfile}" ]] ; then
-			#	echo getting $thumbfile
-			#wget -O "/tmp/${thumbname}" "${thumb}"
-			#if [[ -s "/tmp/${thumbname}" ]]; then
-				#	mv "/tmp/${thumbname}" "${thumbdir}"
-			#fi
-			#if [[ ! -s "${YAMJ_PEOPLEDIR}/${thumbname}" ]]; then
-				#	mv "/tmp/${thumbname}" "${YAMJ_PEOPLEDIR}/${thumbname}"
-			#fi
-		#fi	
-		if [[ -n "${thumb}" && ! -s "${YAMJ_PEOPLEDIR}/${thumbname}" ]]; then
-			wget -O "/tmp/${thumbname}" "${thumb}"
-			if [[ -s "/tmp/${thumbname}" ]]; then
-				mv "/tmp/${thumbname}" "${YAMJ_PEOPLEDIR}/${thumbname}"
+
+		thumbname="${name} - ${role}.jpg"
+		thumbdir="${YAMJ_PEOPLEDIR}/${PF}/"
+		thumbfile="${thumbdir}${thumbname}"
+
+		mkdir -p "${thumbdir}"
+		mkdir -p "/tmp/${PF}"
+
+	 	
+	 	tempfile="/tmp/${PF}/${thumbname}"
+
+		if [[ -n "${thumb}" && ! -s "${thumbfile}" ]]; then
+			rm "${tempfile}"
+			wget -O "${tempfile}" "${thumb}"
+			if [[ -s "${tempfile}" ]]; then
+				mv "${tempfile}" "${thumbdir}"
+			else
+				rm "${tempfile}"
 			fi	
 		fi
 		
-		#oldval=$( xpath -e "//tvshow/actor[$i]/thumb/text()" "${newnfo}" 2>/dev/null )
-		#if [[ "${oldval}" != "People/${thumbsubdir}/${thumbname}" ]]; then
-			#	xmlstarlet ed -L -u "//tvshow/actor[$i]/thumb" -v "People/${thumbsubdir}/${thumbname}" "${newnfo}"
-		#fi
 	done
 fi
 
@@ -85,25 +82,36 @@ if [[ -e "movie.nfo" ]]; then
 	actorcount=$( xpath -e "count(//movie/actor)" "${file}" 2>/dev/null )
 	#movie=$( xpath -e "//movie/originaltitle/text()" "${file}" 2>/dev/null )
 	#year=$( xpath -e "//movie/year/text()" "${file}" 2>/dev/null )
-		
+				
 	for i in `seq 1 $actorcount`;
 	do
 		name=$( xpath -e "//movie/actor[$i]/name/text()" "${file}" 2>/dev/null )
 		thumb=$( xpath -e "//movie/actor[$i]/thumb/text()" "${file}" 2>/dev/null )
-		thumbdir="${YAMJ_PEOPLEDIR}"
-		thumbfile="${YAMJ_PEOPLEDIR}/${name}.jpg"
 
 		#echo ${name}
 		name=${name//[<>\"|\/:?*]/-}
 		#echo ${name}	
+		PF="${name:0:1}"
 
 
-		if [[ -n "${thumb}" && ! -s "${thumbfile}" ]] ; then
-			echo getting $thumbfile
-			wget -O "${thumbfile}" "${thumb}"
+		thumbname="${name}.jpg"
+		thumbdir="${YAMJ_PEOPLEDIR}/${PF}/"
+		thumbfile="${thumbdir}${thumbname}"
+	 	tempfile="/tmp/${PF}/${thumbname}"
 
-		fi	
+		mkdir -p "${thumbdir}"
+		mkdir -p "/tmp/${PF}"
 
-		done
+		if [[ -n "${thumb}" && ! -s "${thumbfile}" ]]; then
+			rm "${tempfile}"
+			wget -O "${tempfile}" "${thumb}"
+			if [[ -s "${tempfile}" ]]; then
+				mv "${tempfile}" "${thumbdir}"
+			else
+				rm "${tempfile}"
+			fi	
+		fi
+
+	done
 fi
 

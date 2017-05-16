@@ -114,22 +114,22 @@
 <action>BLOCK</action>
 </remote>
 
- 	<!-- Outline Full Page -->
+<!-- position one (RED) -->
 
 <text>
-<name>outline.full.page</name>
-<display>[:%outline,upper:] FULL</display>
+<name>outline.page</name>
+<display>[:%outline,upper:]</display>
 <posx>13</posx>
 <posy>685</posy>
 <width>146</width>
 <height>30</height>
-<size>16</size>
+<size>18</size>
 <align>center</align>
 <bold>true</bold>
-<color>tv.bottom.menu.color</color>
+<color>C92536</color>
 </text>
 
-	<!-- Cast Page -->
+<!-- position 2 (GREEN) -->
 
 <text>
 <name>cast.page</name>
@@ -138,13 +138,13 @@
 <posy>685</posy>
 <width>146</width>
 <height>30</height>
-<size>16</size>
+<size>18</size>
 <align>center</align>
 <bold>true</bold>
-<color>tv.bottom.menu.color</color>
+<color>2BBB47</color>
 </text>
 
-	<!-- Fanart Page -->
+<!-- position 3 (YELLOW) -->
 
 <text>
 <name>fanart.page</name>
@@ -153,12 +153,27 @@
 <posy>685</posy>
 <width>146</width>
 <height>30</height>
-<size>16</size>
+<size>22</size>
 <align>center</align>
 <bold>true</bold>
-<color>tv.bottom.menu.hlcolor</color>
+<color>E3E33B</color>
 </text>
 
+<!-- position 4 (BLUE) -->
+<!--
+<text>
+<name>trailers.page</name>
+<display>[:%trailers,upper:]</display>
+<posx>487</posx>
+<posy>685</posy>
+<width>146</width>
+<height>30</height>
+<size>18</size>
+<align>center</align>
+<bold>true</bold>
+<color>466BC1</color>
+</text>
+-->
 
 
 </eskin>
