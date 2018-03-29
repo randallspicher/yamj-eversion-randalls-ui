@@ -25,6 +25,7 @@ if [[ -e "tvshow.nfo" ]]; then
 	name=${name/&amp;/&}
 	newnfo="${name}.nfo"
 
+#echo processing ${name}
 	if [ ! -L "${newnfo}" ]; then
 		rm -v "${newnfo}"
 		#cp -v tvshow.nfo "${newnfo}"			
@@ -62,8 +63,15 @@ if [[ -e "tvshow.nfo" ]]; then
 
 	 	
 	 	tempfile="/tmp/${PF}/${thumbname}"
+		echo detected actor image ${thumb}
+		#echo thumbfile  ${thumbfile}
+		
+		
 
-		if [[ -n "${thumb}" && ! -s "${thumbfile}" ]]; then
+		jpgpattern="jpg$"
+
+		if [[ -n "${thumb}" && "${thumb}" =~ $jpgpattern &&  ! -s "${thumbfile}" ]]; then
+			echo need to fetch ${thumb}
 			rm "${tempfile}"
 			wget -O "${tempfile}" "${thumb}"
 			if [[ -s "${tempfile}" ]]; then
@@ -102,7 +110,11 @@ if [[ -e "movie.nfo" ]]; then
 		mkdir -p "${thumbdir}"
 		mkdir -p "/tmp/${PF}"
 
-		if [[ -n "${thumb}" && ! -s "${thumbfile}" ]]; then
+		jpgpattern="jpg$"
+
+
+		if [[ -n "${thumb}" && "${thumb}" =~ $jpgpattern && ! -s "${thumbfile}" ]]; then
+echo need to fetch ${thumb}
 			rm "${tempfile}"
 			wget -O "${tempfile}" "${thumb}"
 			if [[ -s "${tempfile}" ]]; then
