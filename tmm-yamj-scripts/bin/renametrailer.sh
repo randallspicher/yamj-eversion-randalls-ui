@@ -23,5 +23,5 @@
 		#		vidfile=${file/-thumb.jpg/.videoimage.jpg}
 		#echo new name: ${vidfile}
 			#	echo matched pattern
-			#	rename -n 's/-trailer\.([^\.]+)$/[Trailer]-trailer.$1/' *-trailer.*
+			#	perl-rename -n 's/-trailer\.([^\.]+)$/[Trailer]-trailer.$1/' *-trailer.*
 	done

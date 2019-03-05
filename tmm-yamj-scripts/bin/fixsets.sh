@@ -11,7 +11,7 @@ export PERL_UTF8_LOCALE=1 PERL_UNICODE=ASD
 
 
 
-ls -1 *.nfo | while read file
+ls -1 tvshow.nfo movie.nfo 2>/dev/null | while read file
 do
 
 	if [[ -f "${file}" ]]; then	

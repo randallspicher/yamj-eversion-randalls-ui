@@ -8,8 +8,6 @@ export LOCALE=UTF-8
 
 export PERL_UTF8_LOCALE=1 PERL_UNICODE=AS
 
-
-
 #name='this/has<lots>of|questionable"chars:in?it*now'
 #echo ${name}
 #name=${name//[<>\"|\/:?*]/-}
@@ -37,41 +35,58 @@ if [[ -e "tvshow.nfo" ]]; then
 	actorcount=$( xpath -e "count(//tvshow/actor)" "${file}" 2>/dev/null )
 	for i in `seq 1 $actorcount`;
 	do
-		name=$( xpath -e "//tvshow/actor[$i]/name/text()" "${file}" 2>/dev/null )
-		role=$( xpath -e "//tvshow/actor[$i]/role/text()" "${file}" 2>/dev/null )
 		thumb=$( xpath -e "//tvshow/actor[$i]/thumb/text()" "${file}" 2>/dev/null )
 		movie=$( xpath -e "//tvshow/title/text()" "${file}" 2>/dev/null )
 		movie=${movie/&amp;/&}
+
+
 		
 		year=$( xpath -e "//tvshow/year/text()" "${file}" 2>/dev/null )
 
-		#echo ${name}
-		name=${name//[<>\"|\/:?*]/-}
-		#echo ${name}	
-		PF="CH-${name:0:1}"
-		
+		origname=$( xpath -e "//tvshow/actor[$i]/name/text()" "${file}" 2>/dev/null )
+		origrole=$( xpath -e "//tvshow/actor[$i]/role/text()" "${file}" 2>/dev/null )
+		#name=${origname//[<>\"|\/:?*"]+/-}
+		name=$(echo "${origname}" | sed -E 's/[<>\"|\/:?*"]+/-/g')
+		name=$(echo "${name}" | sed -E 's/  +/ /g')
+		name=$(echo "${name}" | sed -E 's/^[ -]+//g')
+		name=$(echo "${name}" | sed -E 's/[ -]+$//g')
 
-		#echo ${role}
-		role=${role//[<>\"|\/:?*]/-}
+		#role=${origrole//[<>\"|\/:?*"]+/-}
+		role=$(echo "${origrole}" | sed -E 's/[<>\"|\/:?*"]+/-/g')
+		role=$(echo "${role}" | sed -E 's/  +/ /g')
+		role=$(echo "${role}" | sed -E 's/^[ -]+//g')
+		role=$(echo "${role}" | sed -E 's/[ -]+$//g')
+echo role = ${role}
+
+		if [[ ${origname} != ${name} ]]; then
+			xmlstarlet edit -L -u "//tvshow/actor[$i]/name" -v "${name}" "${file}"
+			echo changing ${origname} to ${name}
+		fi
+		if [[ ${origrole} != ${role} ]]; then
+			xmlstarlet edit -L -u "//tvshow/actor[$i]/role" -v "${role}" "${file}"
+			echo changing ${origrole} to ${role}
+		fi
+
+		PF="CH-${name:0:1}"
 
 		thumbname="${name} - ${role}.jpg"
 		thumbdir="${YAMJ_PEOPLEDIR}/${PF}/"
+#		kodithumbdir="${KODI_PEOPLEDIR}/"
 		thumbfile="${thumbdir}${thumbname}"
+#		kodithumbfile="${kodithumbdir}${thumbname}"
+	 	tempfile="/tmp/yamj/${PF}/${thumbname}"
 
-		mkdir -p "${thumbdir}"
-		mkdir -p "/tmp/${PF}"
-
-	 	
-	 	tempfile="/tmp/${PF}/${thumbname}"
 		echo detected actor image ${thumb}
-		#echo thumbfile  ${thumbfile}
+		echo thumbfile  ${thumbfile}
 		
-		
-
 		jpgpattern="jpg$"
 
 		if [[ -n "${thumb}" && "${thumb}" =~ $jpgpattern &&  ! -s "${thumbfile}" ]]; then
-			echo need to fetch ${thumb}
+		#if [[ -n "${thumb}" && "${thumb}" =~ $jpgpattern ]]; then
+
+			mkdir -p "${thumbdir}"
+			mkdir -p "/tmp/yamj/${PF}"
+			echo need to fetch ${thumb} to ${tempfile}
 			rm "${tempfile}"
 			wget -O "${tempfile}" "${thumb}"
 			if [[ -s "${tempfile}" ]]; then
@@ -93,28 +108,49 @@ if [[ -e "movie.nfo" ]]; then
 				
 	for i in `seq 1 $actorcount`;
 	do
-		name=$( xpath -e "//movie/actor[$i]/name/text()" "${file}" 2>/dev/null )
+		####name=$( xpath -e "//movie/actor[$i]/name/text()" "${file}" 2>/dev/null )
 		thumb=$( xpath -e "//movie/actor[$i]/thumb/text()" "${file}" 2>/dev/null )
 
-		#echo ${name}
-		name=${name//[<>\"|\/:?*]/-}
-		#echo ${name}	
+
+		origname=$( xpath -e "//movie/actor[$i]/name/text()" "${file}" 2>/dev/null )
+		origrole=$( xpath -e "//movie/actor[$i]/role/text()" "${file}" 2>/dev/null )
+
+#		name=${origname//[<>\"|\/:?*"]+/-}
+		name=$(echo "${origname}" | sed -E 's/[<>\"|\/:?*"]+/-/g')
+		name=$(echo "${name}" | sed -E 's/  +/ /g')
+		name=$(echo "${name}" | sed -E 's/^[ -]+//g')
+		name=$(echo "${name}" | sed -E 's/[ -]+$//g')
+
+#		role=${origrole//[<>\"|\/:?*"]+/-}
+		role=$(echo "${origrole}" | sed -E 's/[<>\"|\/:?*"]+/-/g')
+		role=$(echo "${role}" | sed -E 's/  +/ /g')
+		role=$(echo "${role}" | sed -E 's/^[ -]+//g')
+		role=$(echo "${role}" | sed -E 's/[ -]+$//g')
+
+		if [[ ${origname} != ${name} ]]; then
+			xmlstarlet edit -L -u "//movie/actor[$i]/name" -v "${name}" "${file}"
+			echo changing ${origname} to ${name}
+		fi
+		if [[ ${origrole} != ${role} ]]; then
+			xmlstarlet edit -L -u "//movie/actor[$i]/role" -v "${role}" "${file}"
+			echo changing ${origrole} to ${role}
+		fi
+
+
 		PF="${name:0:1}"
-
-
 		thumbname="${name}.jpg"
 		thumbdir="${YAMJ_PEOPLEDIR}/${PF}/"
 		thumbfile="${thumbdir}${thumbname}"
-	 	tempfile="/tmp/${PF}/${thumbname}"
+	 	tempfile="/tmp/yamj/${PF}/${thumbname}"
 
-		mkdir -p "${thumbdir}"
-		mkdir -p "/tmp/${PF}"
 
 		jpgpattern="jpg$"
 
 
 		if [[ -n "${thumb}" && "${thumb}" =~ $jpgpattern && ! -s "${thumbfile}" ]]; then
-echo need to fetch ${thumb}
+		echo need to fetch ${thumb}
+		mkdir -p "${thumbdir}"
+		mkdir -p "/tmp/yamj/${PF}"
 			rm "${tempfile}"
 			wget -O "${tempfile}" "${thumb}"
 			if [[ -s "${tempfile}" ]]; then

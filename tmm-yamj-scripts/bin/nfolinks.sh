@@ -165,20 +165,28 @@ fi
 
 
 if [[ -e movie.nfo ]] ; then
-	name=$(grep -Po '(?i)<set>\K.*(?=</set>)' movie.nfo)
-
-	name=${name/&amp;/&}
-
-	echo SET=${name}
 	
+	name=$(grep -Po '(?i)<title>\K.*(?=</title>)' movie.nfo)
+	name=${name/&amp;/&}
+	year=$(grep -Po '(?i)<year>\K.*(?=</year>)' movie.nfo)
+	echo ${name}
 
+	if [[ ! -L "${name} (${year}).nfo" ]]; then
+		rm "${name} (${year}).nfo"
+		ln -rs movie.nfo  "${name} (${year}).nfo"
+	fi
+
+	name=$(grep -Po '(?i)<set>\K.*(?=</set>)' movie.nfo)
+	name=${name/&amp;/&}
+	echo SET=${name}
+		
 	if [[ -e movieset-folder.jpg ]] ; then
 		if [[ ! -L "Set_${name}_1.jpg" ]] ; then
 			rm "Set_${name}_1.jpg"
 			ln -rs  movieset-folder.jpg "Set_${name}_1.jpg"
 		fi
 		
-		ln -frs  movieset-folder.jpg ../folder.jpg
+		#ln -frs  movieset-folder.jpg ../folder.jpg
 	fi
 
 
@@ -187,7 +195,7 @@ if [[ -e movie.nfo ]] ; then
 			rm "Set_${name}_1.jpg"
 			ln -rs  movieset-poster.jpg "Set_${name}_1.jpg"
 		fi
-		ln -frs  movieset-poster.jpg ../folder.jpg
+		#ln -frs  movieset-poster.jpg ../folder.jpg
 	fi
 
 	if [[ -e movieset-banner.jpg ]] ; then
@@ -195,7 +203,7 @@ if [[ -e movie.nfo ]] ; then
 			rm "Set_${name}_1.banner.jpg"
 			ln -rs movieset-banner.jpg "Set_${name}_1.banner.jpg" 
 		fi
-		ln -frs movieset-banner.jpg ../banner.jpg
+		#ln -frs movieset-banner.jpg ../banner.jpg
 	fi
 	
 	if [[ -e movieset-fanart.jpg ]]; then
@@ -203,7 +211,7 @@ if [[ -e movie.nfo ]] ; then
 			rm "Set_${name}_1.fanart.jpg"
 			ln -rs movieset-fanart.jpg "Set_${name}_1.fanart.jpg" 
 		fi
-		ln -frs movieset-fanart.jpg  ../fanart.jpg 
+		#ln -frs movieset-fanart.jpg  ../fanart.jpg 
 	fi
 
 	if [[ -e movieset-logo.png ]]; then
@@ -211,7 +219,7 @@ if [[ -e movie.nfo ]] ; then
 			rm "Set_${name}_1.logo.png"
 			ln -rs movieset-logo.png "Set_${name}_1.logo.png" 
 		fi
-		ln -frs movieset-logo.png  ../logo.png 
+		#ln -frs movieset-logo.png  ../logo.png 
 	fi
 
 	if [[ -e movieset-clearlogo.png ]]; then
@@ -219,7 +227,7 @@ if [[ -e movie.nfo ]] ; then
 			rm "Set_${name}_1.clearlogo.png"
 			ln -rs movieset-clearlogo.png  "Set_${name}_1.clearlogo.png" 
 		fi
-		ln -frs movieset-clearlogo.png  ../clearlogo.png 
+		#ln -frs movieset-clearlogo.png  ../clearlogo.png 
 	fi
 
 	if [[ -e movieset-clearart.png ]]; then
@@ -227,7 +235,7 @@ if [[ -e movie.nfo ]] ; then
 			rm "Set_${name}_1.clearart.png"
 			ln -rs movieset-clearart.png  "Set_${name}_1.clearart.png" 
 		fi
-		ln -frs movieset-clearart.png  ../clearlogo.png 
+		#ln -frs movieset-clearart.png  ../clearlogo.png 
 	fi
 
 	if [[ -s "poster.jpg" && ! -s "folder.jpg" ]]; then
