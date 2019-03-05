@@ -31,14 +31,15 @@ do
 		fi
 
 		if [[ ! -z "${SETNAME}" ]] ; then
-			echo need to convert the set for ${file}
-			xmlstarlet ed -L -d "//movie/set" "${file}"
-			xmlstarlet ed -L -s "//movie" -t elem -n "set" -v "${SETNAME}" "${file}"
-			#xmlstarlet ed -L -u "//movie/set/text()" -v "${SETNAME}" "${file}"
+#			found set for ${file}
+#			echo need to convert the set for ${file}
+#			xmlstarlet ed -L -d "//movie/set" "${file}"
+#			xmlstarlet ed -L -s "//movie" -t elem -n "set" -v "${SETNAME}" "${file}"
+#			#xmlstarlet ed -L -u "//movie/set/text()" -v "${SETNAME}" "${file}"
 		else
-			#echo fetching plain set
+#			#echo fetching plain set
 			SETNAME=$( xpath -e "//movie/set/text()" "${file}" 2>/dev/null )
-			#echo now set is $SETNAME
+#			#echo now set is $SETNAME
 		fi
 
 		if [[ ! -z "${SETNAME}" ]] ; then
