@@ -176,8 +176,15 @@ if [[ -e movie.nfo ]] ; then
 		ln -rs movie.nfo  "${name} (${year}).nfo"
 	fi
 
-	name=$(grep -Po '(?i)<set>\K.*(?=</set>)' movie.nfo)
-	name=${name/&amp;/&}
+	SETNAME=$( xpath -e "//movie/set/name/text()" movie.nfo 2>/dev/null )
+		if [[  -z "${SETNAME}" ]] ; then
+			SETNAME=$( xpath -e "//movie/set/text()" "${file}" 2>/dev/null )
+		fi
+
+#	name=$(grep -Po '(?i)<set>\K.*(?=</set>)' movie.nfo)
+	
+	
+	name=${SETNAME/&amp;/&}
 	echo SET=${name}
 		
 	if [[ -e movieset-folder.jpg ]] ; then

@@ -11,7 +11,7 @@ export PERL_UTF8_LOCALE=1 PERL_UNICODE=ASD
 
 
 
-ls -1 tvshow.nfo movie.nfo 2>/dev/null | while read file
+ls -1 movie.nfo 2>/dev/null | while read file
 do
 
 	if [[ -f "${file}" ]]; then	
@@ -30,13 +30,7 @@ do
 			AIRED=$YEAR	
 		fi
 
-		if [[ ! -z "${SETNAME}" ]] ; then
-#			found set for ${file}
-#			echo need to convert the set for ${file}
-#			xmlstarlet ed -L -d "//movie/set" "${file}"
-#			xmlstarlet ed -L -s "//movie" -t elem -n "set" -v "${SETNAME}" "${file}"
-#			#xmlstarlet ed -L -u "//movie/set/text()" -v "${SETNAME}" "${file}"
-		else
+		if [[  -z "${SETNAME}" ]] ; then
 #			#echo fetching plain set
 			SETNAME=$( xpath -e "//movie/set/text()" "${file}" 2>/dev/null )
 #			#echo now set is $SETNAME
@@ -45,7 +39,7 @@ do
 		if [[ ! -z "${SETNAME}" ]] ; then
 			
 			SETNAME=${SETNAME#The }
-			SETNAME=${SETNAME#A /}
+			SETNAME=${SETNAME#A }
 						
 			WANTSORT="${SETNAME} ${AIRED}"
 			echo WANTSORT ${WANTSORT}
