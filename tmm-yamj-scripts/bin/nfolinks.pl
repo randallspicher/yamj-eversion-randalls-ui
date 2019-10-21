@@ -18,8 +18,8 @@ sub recursedirs {
     print `bash $ENV{'NFO_UTIL_BIN_PATH'}/fixsets.sh`;
     print `bash $ENV{'NFO_UTIL_BIN_PATH'}/webm2mkv.sh *.webm`;
     print `bash $ENV{'NFO_UTIL_BIN_PATH'}/renametrailer.sh`;
-    print `bash $ENV{'NFO_UTIL_BIN_PATH'}/nfolinks.sh`;
-    print `bash $ENV{'NFO_UTIL_BIN_PATH'}/nfowatched.sh`;
+    #print `bash $ENV{'NFO_UTIL_BIN_PATH'}/nfolinks.sh`;
+    #print `bash $ENV{'NFO_UTIL_BIN_PATH'}/nfowatched.sh`;
     print `bash $ENV{'NFO_UTIL_BIN_PATH'}/nfotvactors.sh`;
 
     opendir($DIR, "$Location") || die "can't opendir '$Location': $!";
