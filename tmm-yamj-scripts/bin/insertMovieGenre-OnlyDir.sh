@@ -15,7 +15,7 @@ for DIR in * ; do
 		for FILE in $( find "${DIR}" -name 'movie.nfo') ; do
   			if [[ $(grep -PiL "<genre>${DIR}</genre>" "${FILE}") ]] ; then
 				echo Wrong GENRE in ${FILE} 
-				remove any genre tag that may already exist
+				#remove any genre tag that may already exist
 				sed -i "s,<genre>[^<]*</genre>,,"  ${FILE}
 				# insert correct genre tag
 				echo adding genre ${DIR} to ${FILE}
